@@ -16,6 +16,8 @@ Google’s Tensor Processing Units (TPUs) and modern AI accelerators.</center>
 
 1.<b>Fully Parameterized Design</b>: Easily adjust Matrix Dimension (D) and Data Bit-Width (W) via top-level parameters (top.v)<br>
 
+2.<b>Width Adjustable PISO's</b> : Allows for easy loading of data using PISO(Parallel In Serial Out). <b>NOTE</b>: Provide staggered input into the PISO.
+
 2.<b>Arithmetic Precision</b>: Built-in bit-growth management (W*2 + 1 accumulator) to prevent overflow during large-scale accumulations.<br>
 
 3.<b>Advanced Data Mapping</b>: Features a "Flattened Port" strategy to bypass standard Verilog array limitations, making the core 100% compatible with Vivado, Quartus, and ISE synthesis tools.
@@ -41,7 +43,7 @@ Google’s Tensor Processing Units (TPUs) and modern AI accelerators.</center>
 3. Set test.v as the top module for simulation.
 4. Run Behavioral Simulation.
   <b>Note</b>: For larger matrices (e.g., 16x16), ensure your simulation runtime is set to all or at least 5000ns to account for pipeline latency.
-
+5.Output and input matrices can be seen in Tcl console
 
 <b><h3>Linkedin</h3></b>: www.linkedin.com/in/abraham-santhosh-a1551a328
   
