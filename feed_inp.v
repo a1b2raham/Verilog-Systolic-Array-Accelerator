@@ -57,22 +57,22 @@ module feed_inp #( parameter dim = 2, parameter width = 32, parameter n= 32'hACE
                     num <= 0;
                     complete <= 1'b0;
             end
-        else
+        else 
             begin
-                if(num < dim)begin
-                    for(k=num;k<((2*dim-1)*dim); k=k+(2*dim))begin // for 3*3 positions to be filled in flat matrix (0,6,12) (1,7,13) (2,8,14)
-                        row_in_flat[width*k +: width] <= out_row[(k-num)/(2*dim)];
-                        col_in_flat[width*k +: width] <= out_col[(k-num)/(2*dim)];
-                    
+                if(num < dim) begin
+                    for(k = 0; k < dim; k = k + 1) begin
+                           row_in_flat[width*(num + k*(2*dim)) +: width] <= out_row[k];
+                           col_in_flat[width*(num + k*(2*dim)) +: width] <= out_col[k];
                     end
-                    num <= num + 1;// keeps track of number of cycles
-                end
-                else
-                    complete <= 1'b1; // finished signal for staggered matrix (flat)
-            end    
-    end   
+                    num <= num + 1;
+                end 
+                else 
+                    begin
+                        complete <= 1'b1;
+                    end
+            end
+                
     
-    
-
+   end
     
 endmodule
